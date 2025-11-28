@@ -1,0 +1,199 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url("./ảnh/backrrout.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* TIÊU ĐỀ CHÍNH */
+.main-title {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 40px 0 20px;
+  background-image: linear-gradient(
+    90deg,
+    #ff1493,
+    #ff4500,
+    #1e90ff,
+    #32cd32,
+    #ffd700
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s linear infinite;
+  text-transform: uppercase;
+}
+
+/* SLIDE */
+.slide {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(50px) scale(1);
+  transition: transform 0.5s ease, box-shadow 0.5s ease, border 0.5s ease;
+  z-index: 1;
+}
+
+/* Hiệu ứng khi slide xuất hiện */
+.slide.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* HOVER NỔI BẬT */
+.slide:hover {
+  transform: translateY(-10px) scale(1.12);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8);
+  border: 2px solid #ffd700;
+  z-index: 20;
+}
+
+/* TITLE SLIDE */
+.slide .title {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 20px;
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 6s linear infinite;
+}
+
+/* Gradient riêng từng slide */
+.slide1 .title {
+  background-image: linear-gradient(90deg, #0ff, #ff0, #f0f);
+}
+.slide2 .title {
+  background-image: linear-gradient(90deg, #f00, #ff0, #0f0);
+}
+.slide3 .title {
+  background-image: linear-gradient(90deg, #0f0, #0ff, #f0f);
+}
+.slide4 .title {
+  background-image: linear-gradient(90deg, #ff0, #f00, #00f);
+}
+.slide5 .title {
+  background-image: linear-gradient(90deg, #f0f, #0f0, #ff0);
+}
+.slide6 .title {
+  background-image: linear-gradient(90deg, #00f, #0ff, #f00);
+}
+.slide7 .title {
+  background-image: linear-gradient(90deg, #ff0, #f0f, #0f0);
+}
+.slide8 .title {
+  background-image: linear-gradient(90deg, #0ff, #f00, #ff0);
+}
+
+/* PARAGRAPH */
+.slide p {
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* IMAGES STACK */
+.images {
+  position: relative;
+  height: 250px;
+  margin-top: 20px;
+}
+.stacked {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  cursor: pointer;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.5s ease, left 0.5s ease, top 0.5s ease,
+    box-shadow 0.5s ease;
+  z-index: 1;
+}
+.stacked:hover {
+  transform: translateX(-50%) scale(1.05) rotate(-2deg);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* Keyframes gradient */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* CHUYỂN TRANG NÚT */
+.nav-buttons {
+  position: fixed;
+  bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 100;
+}
+.btn {
+  background: linear-gradient(90deg, #ff7f50, #ff4500);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+.btn-left {
+  transform: translateX(-150%);
+}
+.btn-right {
+  transform: translateX(150%);
+}
+.nav-buttons.show .btn-left,
+.nav-buttons.show .btn-right {
+  transform: translateX(0);
+  opacity: 1;
+}
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .stacked {
+    width: 120px;
+    height: 120px;
+  }
+  .title {
+    font-size: 1.5em;
+  }
+  .slide p {
+    font-size: 1em;
+  }
+  .main-title {
+    font-size: 2em;
+  }
+  .nav-buttons {
+    padding: 0 10px;
+  }
+}
